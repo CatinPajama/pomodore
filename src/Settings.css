@@ -1,0 +1,28 @@
+.slider {
+    background-color: var(--background-color);
+    height : 40px;
+    border : 3px var(--red) solid;
+    border-radius: 20px;
+    margin : 10px;
+}
+
+.thumb {
+    cursor : pointer;
+    background-color: var(--red);
+    width : 40px;
+    height : 40px;
+    border-radius  : 20px;
+}
+
+.thumb.break {
+    background-color: var(--green);
+}
+
+.slider.break {
+    background-color: var(--background-color);
+    border-color : var(--green);
+}
+
+label {
+    color : white;
+}
