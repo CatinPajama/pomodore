@@ -19,10 +19,17 @@
 }
 
 .slider.break {
-    background-color: var(--background-color);
     border-color : var(--green);
 }
 
 label {
     color : white;
+}
+
+.slider.lap {
+    border-color : var(--purple);
+}
+
+.thumb.lap {
+   background-color: var(--purple); 
 }

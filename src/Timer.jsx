@@ -1,10 +1,8 @@
-//import { useTimer } from 'react-timer-hook'
-//import { CircularProgressbar } from 'react-circular-progressbar'
-//import 'react-circular-progressbar/dist/styles.css';
 import './Timer.css'
-import { useState, useEffect, useRef, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import Work from "./Work"
 import Break from "./Break"
+import {Howl} from 'howler'
 
 
 function Time(minutes) {
@@ -14,19 +12,28 @@ function Time(minutes) {
 }
 
 
-function Timer({ workTime, breakTime, setIsSettings}) {
+function Timer({ workTime, breakTime, laps}) {
   
   const [minutes,setMinutes] = useState(workTime);
   const [seconds,setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(true);
   const [isBreak, setIsBreak] = useState(false);
-  const [laps, setLaps] = useState(1);
+  const [currlaps, setcurrlaps] = useState(1);
+  
 
+  const alarm = () => {
+    const sound = new Howl({
+      src : 'https://assets.mixkit.co/sfx/preview/mixkit-classic-alarm-995.mp3',
+      html5  :true,
+      loop : false,
+    })
+    sound.play();
+  }
   useEffect(() => {
     let interval = null;
     clearInterval(interval);
 
-    if (isRunning && laps < 4){
+    if (isRunning && currlaps < 4){
 
     interval = setInterval(() => {
 
@@ -37,7 +44,8 @@ function Timer({ workTime, breakTime, setIsSettings}) {
           setSeconds(59);
         }
         else {
-          setLaps(laps + 1);
+          alarm();
+          setcurrlaps(currlaps + 1);
           setSeconds(0);
           
           setIsRunning(true);
@@ -67,7 +75,7 @@ function Timer({ workTime, breakTime, setIsSettings}) {
   })
   
   const TimerHandle = (e) => {
-    if (e.key === " ") {
+    if (e.key === "p" || e.key === "P") {
       console.log(isRunning);
       if (isRunning === true) {
         setIsRunning(false);
@@ -75,16 +83,13 @@ function Timer({ workTime, breakTime, setIsSettings}) {
       else {
         setIsRunning(true);
       }
-      // setPaused(!paused);
     }
   }
 
   console.log(Time(workTime));
-  let percentage = ((minutes*60 + seconds)/(workTime*60)) * 100;
   
   let timeText = `${minutes}:`;
 
-  console.log(minutes,seconds);
 
   if (seconds < 10) {
     timeText += '0';
@@ -93,7 +98,7 @@ function Timer({ workTime, breakTime, setIsSettings}) {
   
   return (
     <>
-    {isBreak && laps < 4 ? (<Break timeText={timeText}/>) : (<Work timeText={timeText} laps={laps}/>)}
+    {isBreak && currlaps < laps ? (<Break timeText={timeText}/>) : (<Work timeText={timeText} currlaps={currlaps} laps={laps}/>)}
     </>
   )
 }

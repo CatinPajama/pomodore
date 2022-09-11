@@ -1,9 +1,9 @@
-export default function Break({timeText, laps}) {
+export default function Break({timeText, currlaps, laps}) {
 
     return (
         <>
     <h1>{timeText}</h1>
-    <h2>{laps}/4</h2>
+    <h2>{currlaps}/{laps}</h2>
     </>
     );
 }
