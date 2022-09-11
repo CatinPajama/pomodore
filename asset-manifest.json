@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pomodore/static/css/main.9c190c67.css",
-    "main.js": "/pomodore/static/js/main.f344b5c7.js",
+    "main.css": "/pomodore/static/css/main.a061b8cd.css",
+    "main.js": "/pomodore/static/js/main.445d1145.js",
     "index.html": "/pomodore/index.html",
-    "main.9c190c67.css.map": "/pomodore/static/css/main.9c190c67.css.map",
-    "main.f344b5c7.js.map": "/pomodore/static/js/main.f344b5c7.js.map"
+    "main.a061b8cd.css.map": "/pomodore/static/css/main.a061b8cd.css.map",
+    "main.445d1145.js.map": "/pomodore/static/js/main.445d1145.js.map"
   },
   "entrypoints": [
-    "static/css/main.9c190c67.css",
-    "static/js/main.f344b5c7.js"
+    "static/css/main.a061b8cd.css",
+    "static/js/main.445d1145.js"
   ]
 }
